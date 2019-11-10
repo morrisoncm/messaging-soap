@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>messaging-soapapi</name>
-	<comment>Project messaging-soapapi created by Buildship.</comment>
+	<name>messaging-soap</name>
+	<comment>Project messaging-soap created by Buildship.</comment>
 	<projects>
 	</projects>
 	<buildSpec>
