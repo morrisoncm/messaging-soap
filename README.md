@@ -1,7 +1,7 @@
 #messaging-soapapi
 Sample Gradle Spring Boot API with SOAP consumer and Junit 5  
 
-##Workspace Setup
+## Workspace Setup
 Download and install java <https://jdk.java.net/>  
 Setting JAVA_HOME  <https://docs.oracle.com/cd/E19182-01/821-0917/inst_jdk_javahome_t/index.html>  
 Download Eclipse <https://www.eclipse.org/downloads/packages/>  
