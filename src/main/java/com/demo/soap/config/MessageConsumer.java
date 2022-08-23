@@ -11,7 +11,12 @@ public class MessageConsumer {
   private JmsTemplate jmsTemplate;
 
   public String consumeMessage() {
-    return jmsTemplate.receiveAndConvert("DEV.QUEUE.1").toString();
+    Object notification = jmsTemplate.receiveAndConvert("DEV.QUEUE.1");
+    if (null != notification) {
+      return notification.toString();
+    } else {
+      return null;
+    }
   }
 
 }
