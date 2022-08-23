@@ -2,14 +2,14 @@
 
 Sample Gradle Spring Boot API with SOAP consumer and Junit 5  
 
-### Workspace setup
+### Workspace Setup
 - [Download java](https://jdk.java.net/archive/)
 - [Configuring Java](https://docs.oracle.com/cd/E19182-01/821-0917/inst_jdk_javahome_t/index.html)  
 - [Download Eclipse](https://www.eclipse.org/downloads/packages/)  
 - [Download and Install Gradle](https://docs.gradle.org/current/userguide/installation.html)  
 - [Download and install Postman](https://www.getpostman.com/downloads/)
 
-### Docker Commands
+### Docker Setup
 OS-level virtualization to deliver software in packages called containers.
 
 - **docker run -‑env LICENSE=accept --env MQ_QMGR_NAME=QM1 --publish 1414:1414 --publish 9443:9443 --detach ibmcom/mq**
