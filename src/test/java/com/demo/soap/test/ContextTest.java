@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.demo.soap.controller.NotificationController;
 
 @SpringBootTest
-class NotificationTest {
+class ContextTest {
 
   @Autowired
   private NotificationController notificationController;
