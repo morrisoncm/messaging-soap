@@ -26,4 +26,5 @@ public class NotificationController {
   public ResponseEntity<NotificationResponse> receiveNotification() {
     return new ResponseEntity<>(notificationService.receiveNotification(), HttpStatus.OK);
   }
+
 }
