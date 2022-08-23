@@ -1,21 +1,48 @@
 package com.demo.soap.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+import com.demo.soap.domain.request.MessageJMSProducer;
 import com.demo.soap.domain.request.NotificationDetails;
+import com.demo.soap.domain.response.MessageJMSConsumer;
 import com.demo.soap.domain.response.NotificationResponse;
 import com.demo.soap.service.NotificationService;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 public class NotificationServiceImpl implements NotificationService {
 
+  @Autowired
+  private MessageJMSProducer messageJMSProducer;
+  @Autowired
+  private MessageJMSConsumer messageConsumer;
+
   @Override
   public NotificationResponse sendNotification(NotificationDetails notificationDetails) {
-    return null;
+    try {
+      log.debug("sendNotification() -> notificationDetails {}", notificationDetails);
+      return new NotificationResponse(messageJMSProducer.sendMessage(notificationDetails.getMessage()));
+    } catch (final Exception cause) {
+      log.error("sendNotification() -> exception for notificationDetails {]", notificationDetails.getMessage(), cause);
+      throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "sendNotification exception",
+          cause);
+    }
   }
 
   @Override
   public NotificationResponse receiveNotification() {
-    return null;
+    try {
+      final var msgReceived = messageConsumer.consumeMessage();
+      log.debug("receiveNotification() -> msg {}", msgReceived);
+      return new NotificationResponse(msgReceived);
+    } catch (final Exception cause) {
+      log.error("receiveMessage() -> exception", cause);
+      throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "receiveNotification exception",
+          cause);
+    }
   }
 
 }
