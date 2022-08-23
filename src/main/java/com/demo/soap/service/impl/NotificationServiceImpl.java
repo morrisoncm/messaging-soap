@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import com.demo.soap.domain.request.MessageJMSProducer;
+import com.demo.soap.config.MessageConsumer;
+import com.demo.soap.config.MessageProducer;
 import com.demo.soap.domain.request.NotificationDetails;
-import com.demo.soap.domain.response.MessageJMSConsumer;
 import com.demo.soap.domain.response.NotificationResponse;
 import com.demo.soap.service.NotificationService;
 import lombok.extern.slf4j.Slf4j;
@@ -16,16 +16,16 @@ import lombok.extern.slf4j.Slf4j;
 public class NotificationServiceImpl implements NotificationService {
 
   @Autowired
-  private MessageJMSProducer messageJMSProducer;
+  private MessageProducer messageProducer;
   @Autowired
-  private MessageJMSConsumer messageConsumer;
+  private MessageConsumer messageConsumer;
 
   @Override
   public NotificationResponse sendNotification(NotificationDetails notificationDetails) {
     try {
       log.debug("sendNotification() -> notificationDetails {}", notificationDetails);
       return new NotificationResponse(
-          messageJMSProducer.sendMessage(notificationDetails.getMessage()));
+          messageProducer.sendMessage(notificationDetails.getMessage()));
     } catch (final Exception cause) {
       log.error("sendNotification() -> exception for notificationDetails {]", notificationDetails,
           cause);
