@@ -24,11 +24,13 @@ public class NotificationServiceImpl implements NotificationService {
   public NotificationResponse sendNotification(NotificationDetails notificationDetails) {
     try {
       log.debug("sendNotification() -> notificationDetails {}", notificationDetails);
-      return new NotificationResponse(messageJMSProducer.sendMessage(notificationDetails.getMessage()));
+      return new NotificationResponse(
+          messageJMSProducer.sendMessage(notificationDetails.getMessage()));
     } catch (final Exception cause) {
-      log.error("sendNotification() -> exception for notificationDetails {]", notificationDetails, cause);
-      throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "sendNotification exception",
+      log.error("sendNotification() -> exception for notificationDetails {]", notificationDetails,
           cause);
+      throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY,
+          "sendNotification exception", cause);
     }
   }
 
@@ -40,8 +42,8 @@ public class NotificationServiceImpl implements NotificationService {
       return new NotificationResponse(msgReceived);
     } catch (final Exception cause) {
       log.error("receiveNotification() -> exception", cause);
-      throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "receiveNotification exception",
-          cause);
+      throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY,
+          "receiveNotification exception", cause);
     }
   }
 

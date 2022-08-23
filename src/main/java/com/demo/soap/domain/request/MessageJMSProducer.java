@@ -14,5 +14,5 @@ public class MessageJMSProducer {
     jmsTemplate.convertAndSend("DEV.QUEUE.1", message);
     return "message sent";
   }
- 
+
 }

@@ -13,5 +13,5 @@ public class MessageJMSConsumer {
   public String consumeMessage() {
     return jmsTemplate.receiveAndConvert("DEV.QUEUE.1").toString();
   }
- 
+
 }
