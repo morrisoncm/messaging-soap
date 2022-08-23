@@ -11,7 +11,7 @@ import com.demo.soap.domain.response.NotificationResponse;
 import com.demo.soap.service.NotificationService;
 
 @RestController
-@RequestMapping("/training/notification")
+@RequestMapping("/demo/notification")
 public class NotificationController {
 
   @Autowired
