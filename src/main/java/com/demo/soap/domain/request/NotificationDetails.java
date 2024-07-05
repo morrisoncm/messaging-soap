@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class NotificationDetails {
 
-  private String message;
+    private String message;
 
 }

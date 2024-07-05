@@ -7,16 +7,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class MessageConsumer {
 
-  @Autowired
-  private JmsTemplate jmsTemplate;
+    @Autowired
+    private JmsTemplate jmsTemplate;
 
-  public String consumeMessage() {
-    Object notification = jmsTemplate.receiveAndConvert("DEV.QUEUE.1");
-    if (null != notification) {
-      return notification.toString();
-    } else {
-      return null;
+    public String consumeMessage() {
+        Object notification = jmsTemplate.receiveAndConvert("DEV.QUEUE.1");
+        if (null != notification) {
+            return notification.toString();
+        } else {
+            return null;
+        }
     }
-  }
 
 }

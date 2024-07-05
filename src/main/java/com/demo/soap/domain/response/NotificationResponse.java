@@ -9,6 +9,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class NotificationResponse {
 
-  private String message;
+    private String message;
 
 }

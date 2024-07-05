@@ -6,8 +6,8 @@ import com.demo.soap.domain.response.NotificationResponse;
 
 public interface NotificationService {
 
-  NotificationResponse sendNotification(NotificationDetails notificationDetails);
+    NotificationResponse sendNotification(NotificationDetails notificationDetails);
 
-  NotificationResponse receiveNotification();
+    NotificationResponse receiveNotification();
 
 }

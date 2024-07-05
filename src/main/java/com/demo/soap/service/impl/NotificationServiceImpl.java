@@ -15,36 +15,36 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class NotificationServiceImpl implements NotificationService {
 
-  @Autowired
-  private MessageProducer messageProducer;
-  @Autowired
-  private MessageConsumer messageConsumer;
+    @Autowired
+    private MessageProducer messageProducer;
+    @Autowired
+    private MessageConsumer messageConsumer;
 
-  @Override
-  public NotificationResponse sendNotification(NotificationDetails notificationDetails) {
-    try {
-      log.debug("sendNotification() -> notificationDetails {}", notificationDetails);
-      return new NotificationResponse(
-          messageProducer.sendMessage(notificationDetails.getMessage()));
-    } catch (final Exception cause) {
-      log.error("sendNotification() -> exception for notificationDetails {]", notificationDetails,
-          cause);
-      throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY,
-          "sendNotification exception", cause);
+    @Override
+    public NotificationResponse sendNotification(NotificationDetails notificationDetails) {
+        try {
+            log.debug("sendNotification() -> notificationDetails {}", notificationDetails);
+            return new NotificationResponse(
+                    messageProducer.sendMessage(notificationDetails.getMessage()));
+        } catch (final Exception cause) {
+            log.error("sendNotification() -> exception for notificationDetails {]", notificationDetails,
+                    cause);
+            throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY,
+                    "sendNotification exception", cause);
+        }
     }
-  }
 
-  @Override
-  public NotificationResponse receiveNotification() {
-    try {
-      final var msgReceived = messageConsumer.consumeMessage();
-      log.debug("receiveNotification() -> msg {}", msgReceived);
-      return new NotificationResponse(msgReceived);
-    } catch (final Exception cause) {
-      log.error("receiveNotification() -> exception", cause);
-      throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY,
-          "receiveNotification exception", cause);
+    @Override
+    public NotificationResponse receiveNotification() {
+        try {
+            final var msgReceived = messageConsumer.consumeMessage();
+            log.debug("receiveNotification() -> msg {}", msgReceived);
+            return new NotificationResponse(msgReceived);
+        } catch (final Exception cause) {
+            log.error("receiveNotification() -> exception", cause);
+            throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY,
+                    "receiveNotification exception", cause);
+        }
     }
-  }
 
 }

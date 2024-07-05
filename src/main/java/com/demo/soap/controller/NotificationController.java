@@ -14,17 +14,17 @@ import com.demo.soap.service.NotificationService;
 @RequestMapping("/demo/notification")
 public class NotificationController {
 
-  @Autowired
-  private NotificationService notificationService;
+    @Autowired
+    private NotificationService notificationService;
 
-  public ResponseEntity<NotificationResponse> sendNotification(
-      @RequestBody NotificationDetails notificationDetails) {
-    return new ResponseEntity<>(notificationService.sendNotification(notificationDetails),
-        HttpStatus.OK);
-  }
+    public ResponseEntity<NotificationResponse> sendNotification(
+            @RequestBody NotificationDetails notificationDetails) {
+        return new ResponseEntity<>(notificationService.sendNotification(notificationDetails),
+                HttpStatus.OK);
+    }
 
-  public ResponseEntity<NotificationResponse> receiveNotification() {
-    return new ResponseEntity<>(notificationService.receiveNotification(), HttpStatus.OK);
-  }
+    public ResponseEntity<NotificationResponse> receiveNotification() {
+        return new ResponseEntity<>(notificationService.receiveNotification(), HttpStatus.OK);
+    }
 
 }
