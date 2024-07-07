@@ -1,8 +1,11 @@
 plugins {
-    id 'java'
+    id 'org.springframework.boot' version '3.3.1'
     id 'eclipse'
     id 'idea'
+    id 'java'
 }
+
+apply plugin: 'io.spring.dependency-management'
 
 group = 'com.demo.soap'
 version = '0.0.1-SNAPSHOT'
@@ -12,14 +15,15 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web:3.3.1'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'com.ibm.mq:mq-jms-spring-boot-starter:2.0.0'
-    compileOnly 'org.projectlombok:lombok:1.18.26'
-    annotationProcessor 'org.projectlombok:lombok:1.18.26'
-
-    testImplementation 'org.projectlombok:lombok:1.18.26'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.26'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.3.1'
+    
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+    testImplementation 'org.projectlombok:lombok:1.18.34'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.34'
+    
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.9.3'
     testImplementation 'org.hamcrest:hamcrest-library:2.2'
 }
